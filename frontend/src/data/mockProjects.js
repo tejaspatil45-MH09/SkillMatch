@@ -1,0 +1,12 @@
+export const SKILLS = ['React', 'Node.js', 'PostgreSQL', 'Python', 'C++', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'Express', 'MongoDB', 'UI/UX Design', 'Figma', 'Django', 'Flutter', 'Java', 'Spring Boot', 'Docker', 'AWS', 'Data Analysis', 'Machine Learning', 'SEO', 'WordPress', 'Git', 'REST APIs']
+const P = (id, companyId, title, description, min, max, deadlineDays, skills, status, ago) => ({ id, companyId, title, description, budgetMin: min, budgetMax: max, deadlineDays, skills, status, ago })
+export const buildProjects = (t) => [
+  P('p1', 'u-c1', 'E-commerce Website', 'Build a storefront for our regional hardware catalogue: product listing, cart, order tracking, and an admin panel for stock updates. We have designs ready.', 25000, 40000, 30, ['React', 'Node.js', 'PostgreSQL'], 'OPEN', 3),
+  P('p2', 'u-c1', 'Inventory Management Dashboard', 'Internal dashboard for warehouse stock levels with low-stock alerts, CSV import, and role-based views for managers and staff.', 30000, 45000, 45, ['React', 'Express', 'PostgreSQL', 'Tailwind CSS'], 'OPEN', 6),
+  P('p3', 'u-c2', 'Mobile App UI Redesign', 'Redesign the onboarding and checkout screens of our client\'s food delivery app. Deliverables: Figma files and a short usability review.', 15000, 25000, 21, ['UI/UX Design', 'Figma'], 'OPEN', 4),
+  P('p4', 'u-c3', 'Sales Forecasting Model', 'Develop a monthly sales forecasting model from three years of transaction data, with a notebook and a short methodology report.', 40000, 60000, 40, ['Python', 'Machine Learning', 'Data Analysis'], 'OPEN', 9),
+  P('p5', 'u-c3', 'Billing Microservice', 'Create a billing microservice handling invoices and recurring charges, with Docker deployment and API documentation.', 35000, 50000, 35, ['Java', 'Spring Boot', 'PostgreSQL', 'Docker'], 'IN_PROGRESS', 25),
+  P('p6', 'u-c2', 'Company Portfolio Website', 'Responsive portfolio website with case study pages and a contact form.', 12000, 20000, 20, ['React', 'Tailwind CSS'], 'COMPLETED', 60),
+  P('p7', 'u-c1', 'Warehouse Route Optimizer', 'Implement a route optimisation module that reduces delivery distance for our warehouse fleet.', 45000, 70000, 50, ['C++', 'Python'], 'OPEN', 2),
+  P('p8', 'u-c3', 'Customer Support Chatbot Backend', 'Backend for a rules-based support chatbot with conversation logging.', 20000, 30000, 25, ['Node.js', 'MongoDB', 'Express'], 'CANCELLED', 35),
+].map(({ ago, deadlineDays, ...p }) => ({ ...p, createdAt: t.ago(ago), deadline: t.later(deadlineDays * 24) }))

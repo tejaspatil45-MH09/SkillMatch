@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: skillmatch
+      POSTGRES_PASSWORD: skillmatch
+      POSTGRES_DB: skillmatch
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    # creates the throwaway test database on first start
+    command: >
+      bash -c "docker-entrypoint.sh postgres & until pg_isready -U skillmatch; do sleep 1; done;
+      psql -U skillmatch -tc \"SELECT 1 FROM pg_database WHERE datname='skillmatch_test'\" | grep -q 1 || psql -U skillmatch -c 'CREATE DATABASE skillmatch_test'; wait"
+volumes:
+  pgdata:

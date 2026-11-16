@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build files
+dist/
+build/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Database backups
+*.dump
+*.sql
+!backend/migrations/
+!backend/migrations/*.sql
+*.backup
+backups/

@@ -1,0 +1,17 @@
+{
+  "name": "skillmatch",
+  "private": true,
+  "version": "1.1.0",
+  "description": "SkillMatch full stack: React frontend + Express/PostgreSQL backend",
+  "scripts": {
+    "setup": "npm --prefix backend install && npm --prefix frontend install",
+    "db:up": "docker compose up -d",
+    "db:migrate": "npm --prefix backend run migrate",
+    "db:seed": "npm --prefix backend run seed",
+    "dev:api": "npm --prefix backend run dev",
+    "dev:web": "npm --prefix frontend run dev:real",
+    "dev:web:mock": "npm --prefix frontend run dev",
+    "test": "npm --prefix backend test && npm --prefix frontend test",
+    "build": "npm --prefix frontend run build:real"
+  }
+}
